@@ -11,18 +11,15 @@ import Footer from './components/Footer'
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
-    // Check if user has a theme preference in localStorage
     const savedTheme = localStorage.getItem('portfolio-theme')
     return savedTheme ? savedTheme === 'dark' : false
   })
   
   const [activeSection, setActiveSection] = useState('home')
 
+  
   useEffect(() => {
-    // Save theme preference to localStorage
     localStorage.setItem('portfolio-theme', darkMode ? 'dark' : 'light')
-    
-    // Add/remove dark class to body for better browser compatibility
     if (darkMode) {
       document.documentElement.classList.add('dark')
     } else {
@@ -54,9 +51,7 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const toggleTheme = () => {
-    setDarkMode(!darkMode)
-  }
+  const toggleTheme = () => setDarkMode(!darkMode)
 
   return (
     <div className="App">

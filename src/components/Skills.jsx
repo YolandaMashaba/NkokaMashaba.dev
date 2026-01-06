@@ -80,7 +80,7 @@ const Skills = () => {
                 <span className="category-icon">{category.icon}</span>
                 <h3>{category.title}</h3>
               </div>
-              
+
               <div className="skills-list">
                 {(animatedSkills[categoryIndex] || []).map((skill, skillIndex) => (
                   <div key={skillIndex} className="skill-item">

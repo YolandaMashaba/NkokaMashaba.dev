@@ -16,10 +16,10 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState(null) // null, 'success', 'error'
   const [errors, setErrors] = useState({})
 
-  // Replace these with your actual EmailJS credentials
-  const EMAILJS_SERVICE_ID = 'service_i0toesr'
-  const EMAILJS_TEMPLATE_ID = 'template_jo8ctfp'
-  const EMAILJS_PUBLIC_KEY = '5-wlRAkQHSvZLLFCC'
+  // Pull EmailJS credentials from central config
+  const EMAILJS_SERVICE_ID = config.emailjs.serviceId
+  const EMAILJS_TEMPLATE_ID = config.emailjs.templateId
+  const EMAILJS_PUBLIC_KEY = config.emailjs.publicKey
 
   const validateForm = () => {
     const newErrors = {}
@@ -83,7 +83,10 @@ const Contact = () => {
           from_email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          to_name: 'Your Name', // Your name that will appear in the email
+          to_name: config.name, // Your name that will appear in the email
+          to_email: config.email, // common variable name
+          to: config.email, // alternative common name some templates use
+          recipient: config.email, // another fallback
           reply_to: formData.email,
         },
         EMAILJS_PUBLIC_KEY
@@ -107,9 +110,10 @@ const Contact = () => {
       }
       
     } catch (error) {
-      console.error('Error sending email:', error)
+      // EmailJSResponseStatus typically has .status and .text
+      console.error('Error sending email:', error?.status, error?.text || error)
       setSubmitStatus('error')
-      setErrors({ submit: 'Failed to send message. Please try again or contact me directly.' })
+      setErrors({ submit: `Failed to send message (${error?.status || 'unknown'}). ${error?.text || 'Please try again or contact me directly.'}` })
       
       // Reset error status after 5 seconds
       setTimeout(() => {
@@ -181,18 +185,22 @@ const Contact = () => {
             <div className="social-links">
               <h4>Connect with me</h4>
               <div className="social-icons">
-                <a href="https://github.com/YolandaMashaba" target="_blank" rel="noopener noreferrer" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                  </svg>
-                </a>
-                <a href="https://linkedin.com/in/nkoka-mashaba" target="_blank" rel="noopener noreferrer" className="social-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                    <rect x="2" y="9" width="4" height="12"/>
-                    <circle cx="4" cy="4" r="2"/>
-                  </svg>
-                </a>
+                {config.social?.github && (
+                  <a href={config.social.github} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                  </a>
+                )}
+                {config.social?.linkedin && (
+                  <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                      <rect x="2" y="9" width="4" height="12"/>
+                      <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -322,7 +330,7 @@ const Contact = () => {
         </div>
       </div>
       
-      <style jsx>{`
+      <style>{`
         .contact-content {
           display: grid;
           grid-template-columns: 1fr 1.5fr;

@@ -1,5 +1,6 @@
 // src/components/Hero.jsx - Updated version
 import { useEffect, useState } from 'react'
+import { config } from '../config'
 
 const Hero = () => {
   const [textIndex, setTextIndex] = useState(0)
@@ -78,6 +79,18 @@ const Hero = () => {
                 </svg>
                 Contact Me
               </a>
+              <div className="hero-social" aria-label="Social links">
+                {config.social?.github && (
+                  <a href={config.social.github} target="_blank" rel="noopener noreferrer" className="btn-outline" aria-label="GitHub">
+                    GitHub
+                  </a>
+                )}
+                {config.social?.linkedin && (
+                  <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="btn-outline" aria-label="LinkedIn">
+                    LinkedIn
+                  </a>
+                )}
+              </div>
             </div>
             
             <div className="hero-stats">
@@ -125,7 +138,7 @@ const Hero = () => {
         </div>
       </div>
       
-      <style jsx>{`
+      <style>{`
         .hero {
           padding-top: 120px;
           overflow: hidden;
@@ -210,12 +223,12 @@ const Hero = () => {
           align-items: center;
           justify-content: center;
           gap: 0.5rem;
-          padding: 0.75rem 1.75rem;
+          padding: 0.75rem 1.25rem;
           border-radius: 9999px;
           font-weight: 600;
           text-decoration: none;
-          border: 2px solid var(--primary-color);
-          color: var(--primary-color);
+          border: 1px solid var(--border-color);
+          color: var(--text-color);
           background: transparent;
           cursor: pointer;
           transition: var(--transition);
@@ -223,10 +236,10 @@ const Hero = () => {
         }
         
         .btn-outline:hover {
-          background-color: var(--primary-color);
-          color: white;
-          transform: translateY(-3px);
-          box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+          border-color: var(--primary-color);
+          color: var(--primary-color);
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-sm);
         }
         
         .hero-stats {
@@ -265,10 +278,10 @@ const Hero = () => {
         
         .gradient-border {
           position: relative;
-          padding: 12px;
+          padding: 8px;
           border-radius: 50%;
-          background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-          animation: rotate 20s linear infinite;
+          background: transparent;
+          border: 1px solid var(--border-color);
         }
         
         @keyframes rotate {
@@ -284,12 +297,13 @@ const Hero = () => {
           width: 300px;
           height: 300px;
           border-radius: 50%;
-          background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-color) 100%);
+          background: var(--card-bg);
           display: flex;
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          box-shadow: var(--shadow-xl);
+          border: 1px solid var(--border-color);
+          box-shadow: var(--shadow-sm);
         }
         
         .profile-initials {
@@ -302,12 +316,7 @@ const Hero = () => {
         }
         
         .floating-elements {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0;
-          pointer-events: none;
+          display: none;
         }
         
         .element {
