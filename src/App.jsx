@@ -1,4 +1,4 @@
-// src/App.jsx
+// src/App.jsx - Light-only version, no dark mode
 import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './components/Header'
@@ -10,22 +10,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => {
-    const savedTheme = localStorage.getItem('portfolio-theme')
-    return savedTheme ? savedTheme === 'dark' : false
-  })
-  
   const [activeSection, setActiveSection] = useState('home')
-
-  
-  useEffect(() => {
-    localStorage.setItem('portfolio-theme', darkMode ? 'dark' : 'light')
-    if (darkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [darkMode])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,28 +23,17 @@ function App() {
         }
         return false
       })
-      
-      if (current) {
-        setActiveSection(current)
-      }
+      if (current) setActiveSection(current)
     }
 
     window.addEventListener('scroll', handleScroll)
-    // Initial check
     handleScroll()
-    
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const toggleTheme = () => setDarkMode(!darkMode)
-
   return (
     <div className="App">
-      <Header 
-        activeSection={activeSection} 
-        toggleTheme={toggleTheme} 
-        darkMode={darkMode}
-      />
+      <Header activeSection={activeSection} />
       <main>
         <Hero />
         <About />
