@@ -35,7 +35,7 @@ const Projects = () => {
   return (
     <section id="projects" className="projects fade-in">
       <div className="container">
-        <h2 className="projects-title">My <span className="serif">projects</span></h2>
+        <h2 className="projects-title">My <span className="serif">Projects</span></h2>
 
         <div className="projects-intro">
           <p>Selected work. Clean, approachable UI with a focus on usability and performance.</p>

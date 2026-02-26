@@ -6,7 +6,7 @@ const Skills = () => {
 
   const skillCategories = [
     { title: 'Frontend', skills: ['React', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'Vite', 'Blazor'] },
-    { title: 'Backend', skills: ['Node.js', 'MongoDB', 'PostgreSQL', 'REST APIs', 'Java', 'C#'] },
+    { title: 'Backend', skills: ['Node.js', 'MongoDB', 'PostgreSQL', 'REST APIs', 'Java', 'C#', '.NET'] },
     { title: 'Tools & Others', skills: ['Git', 'Figma', 'Testing', 'CI/CD'] },
   ]
 
@@ -38,7 +38,7 @@ const Skills = () => {
   return (
     <section id="skills" className="skills fade-in">
       <div className="container">
-        <h2 className="skills-title">My <span className="serif">skills</span></h2>
+        <h2 className="skills-title">My <span className="serif">Skills</span></h2>
 
         <div className="skills-grid">
           {skillCategories.map((category, categoryIndex) => (

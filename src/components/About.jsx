@@ -1,11 +1,11 @@
-// src/components/About.jsx - Minimal aesthetic to match hero/nav/footer
+// src/components/About.jsx - Minimal aesthetic with required pink accents
 import React from 'react'
 
 const About = () => {
   return (
     <section id="about" className="about fade-in minimal">
       <div className="container">
-        <h2 className="about-title">About <span className="serif">me</span></h2>
+        <h2 className="about-title">About <span className="serif">Me</span></h2>
 
         <div className="about-content">
           <div className="about-text">
@@ -49,11 +49,15 @@ const About = () => {
         .about-title { font-family: ui-serif, Georgia, 'Times New Roman', serif; font-size: 2.25rem; font-weight: 800; margin-bottom: 2rem; letter-spacing: -0.01em; }
         .about-title .serif { box-shadow: inset 0 -0.25em 0 rgba(255, 192, 203, 0.55); }
         .about-content { display: grid; grid-template-columns: 2fr 1fr; gap: 3.5rem; align-items: start; }
-        .about-intro { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; }
+
+        /* Subheading in pink */
+        .about-intro { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: #0f172a; }
+
         .muted { color: #6b7280; margin-bottom: 1rem; }
         .about-text p { margin-bottom: 1.1rem; color: var(--text-secondary); line-height: 1.7; }
 
-        .about-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; margin: 1.5rem 0 0; padding: 1.1rem; background: #f8fafc; border-radius: 0.75rem; border: 1px solid var(--border-color); }
+        /* Details block with neutral border */
+        .about-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; margin: 1.5rem 0 0; padding: 1.1rem; background: #ffffff; border-radius: 0.75rem; border: 1px solid var(--border-color); }
         .detail-item { display: flex; flex-direction: column; gap: 0.25rem; }
         .detail-item strong { color: var(--text-color); font-weight: 600; }
         .detail-item span { color: var(--text-secondary); }
@@ -63,11 +67,12 @@ const About = () => {
         .text-link { color: var(--text-secondary); text-decoration: none; border-bottom: 1px dashed #cbd5e1; padding-bottom: 2px; }
         .text-link:hover { color: var(--text-color); border-bottom-color: var(--text-color); }
 
+        /* Stats with pink numbers and neutral card borders */
         .about-stats { position: relative; }
         .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
         .stat-card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 0.75rem; padding: 1.25rem; text-align: center; transition: var(--transition); }
-        .stat-card:hover { transform: translateY(-0.5rem); border-color: var(--primary-color); }
-        .stat-number { font-size: 1.875rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.25rem; }
+        .stat-card:hover { transform: translateY(-0.5rem); }
+        .stat-number { font-size: 1.875rem; font-weight: 700; color: #f6d6dc; margin-bottom: 0.25rem; }
         .stat-label { font-size: 0.875rem; color: var(--text-secondary); font-weight: 500; }
 
         @media (max-width: 1024px) { .about-content { gap: 2.5rem; } }

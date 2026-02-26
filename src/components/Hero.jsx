@@ -5,7 +5,7 @@ const Hero = () => {
   const [textIndex, setTextIndex] = useState(0)
   const roles = [
     'Product Designer',
-    'Full‑stack Developer',
+    'Full‑Stack Developer',
     'UI/UX Designer',
     'Problem Solver'
   ]
@@ -38,11 +38,11 @@ const Hero = () => {
             <h1 className="hero-headline">
               Hello,
               <br />
-              my name is <span className="underline">Nkoka Mashaba</span>
+              My name is <span className="underline">Nkoka Mashaba</span>
             </h1>
 
             <p className="hero-lead">
-              I'm a {roles[textIndex]}, helping teams deliver beautiful, intuitive online
+              I am a {roles[textIndex]}, helping teams deliver beautiful, intuitive online
               experiences through solid research, thoughtful design and accessible code
               <span className="cursor">|</span>
             </p>
@@ -58,7 +58,7 @@ const Hero = () => {
                     ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }}
               >
-                A little about me
+                A little bit about me
               </a>
               <a href="#contact" className="text-link" onClick={handleContactClick}>
                 or get in touch →
