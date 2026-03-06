@@ -26,6 +26,18 @@ const Header = ({ activeSection }) => {
       <div className="container">
         <nav className="nav">
           <a href="#home" className="brand" onClick={(e) => { e.preventDefault(); handleNavClick('home') }}>
+            <span className="logo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 40 40">
+                <defs>
+                  <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: '#f6d6dc', stopOpacity: 1 }} />
+                    <stop offset="100%" style={{ stopColor: '#efc4cf', stopOpacity: 1 }} />
+                  </linearGradient>
+                </defs>
+                <rect width="40" height="40" rx="8" fill="url(#logoGrad)"/>
+                <text x="20" y="27" font-family="Caveat, cursive" font-size="22" font-weight="700" fill="#111827" text-anchor="middle">N</text>
+              </svg>
+            </span>
             NkokaMashaba.dev
           </a>
 
@@ -52,25 +64,9 @@ const Header = ({ activeSection }) => {
           </ul>
         </nav>
       </div>
-
-      <style>{`
-        .site-header { position: fixed; top: 0; left: 0; right: 0; height: 80px; background: rgba(255,255,255,0.85); backdrop-filter: saturate(160%) blur(8px); border-bottom: 1px solid var(--border-color); z-index: 1000; }
-        .nav { display: flex; align-items: center; justify-content: space-between; height: 80px; }
-        .brand { font-weight: 700; text-decoration: none; color: var(--text-color); letter-spacing: -0.01em; }
-        .links { display: flex; align-items: center; list-style: none; gap: 1.25rem; margin: 0; padding: 0; }
-        .links a { text-decoration: none; color: var(--text-secondary); padding: 0.25rem 0; }
-        .links a.active, .links a:hover { color: var(--text-color); }
-        .links a.active { box-shadow: inset 0 -2px 0 #f6d6dc; }
-        .hamburger { display: none; background: none; border: none; color: var(--text-color); padding: 0.4rem; border-radius: 8px; }
-        .hamburger:hover { background: var(--border-color); }
-        @media (max-width: 768px) {
-          .hamburger { display: inline-flex; }
-          .links { position: fixed; top: 80px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border-color); transform: translateY(-110%); opacity: 0; visibility: hidden; transition: transform .25s ease, opacity .25s ease; flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.5rem; }
-          .links.open { transform: translateY(0); opacity: 1; visibility: visible; }
-        }
-      `}</style>
     </header>
   )
 }
 
 export default Header
+
