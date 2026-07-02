@@ -11,7 +11,7 @@ const About = () => {
           <div className="about-text">
             <div className="about-text-box">
               <h3 className="about-intro">Hi, I'm Nkoka Mashaba</h3>
-              <p className="muted">I craft clean, accessible user experiences with a focus on clarity and thoughtful details. I care about performance, a11y and maintainable design systems.</p>
+              <p className="muted">I craft clean, accessible user experiences with a focus on clarity and thoughtful details. I care about performance, accessibility and maintainable design systems.</p>
               <p className="muted">With a background in front‑end engineering and product thinking, I help teams move from ideas to intuitive, reliable interfaces.</p>
 
               <div className="about-details">
@@ -31,7 +31,7 @@ const About = () => {
           <div className="about-stats">
             <div className="stat-grid">
               <div className="stat-card">
-                <div className="stat-number">0+</div>
+                <div className="stat-number">2</div>
                 <div className="stat-label">Projects Completed</div>
               </div>
               <div className="stat-card">

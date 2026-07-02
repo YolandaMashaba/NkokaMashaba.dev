@@ -22,7 +22,11 @@ export const config = {
   // EmailJS Configuration
   emailjs: {
     serviceId: 'service_i0toesr',
-    templateId: 'template_jo8ctfp',
+
+    // EmailJS templates
+    contactTemplateId: 'template_jo8ctfp',
+    replyTemplateId: 'template_n71c3ta',
+
     publicKey: '5-wlRAkQHSvZLLFCC'
   }
 }

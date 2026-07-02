@@ -18,8 +18,8 @@ const Contact = () => {
 
   // Pull EmailJS credentials from central config
   const EMAILJS_SERVICE_ID = config.emailjs.serviceId
-  const EMAILJS_TEMPLATE_ID = config.emailjs.templateId
   const EMAILJS_PUBLIC_KEY = config.emailjs.publicKey
+
 
   const validateForm = () => {
     const newErrors = {}
@@ -65,57 +65,63 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     if (!validateForm()) {
       return
     }
-    
+
     setIsSubmitting(true)
     setSubmitStatus(null)
-    
+
     try {
-      // Send email using EmailJS
-      const response = await emailjs.send(
+      const payload = {
+        // Shared across both templates (dashboard variables)
+        name: formData.name,
+        title: formData.subject,
+        message: formData.message,
+
+        // “Contact Us” expects {{email}} (recipient/reply-to destination)
+        // We send your configured site email here.
+        email: config.email,
+
+        // “Auto-Reply” expects {{from_email}} (the user’s email to reply to)
+        from_email: formData.email,
+      }
+
+      // 1) Notify yourself (Contact Us)
+      await emailjs.send(
         EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_name: config.name, // Your name that will appear in the email
-          to_email: config.email, // common variable name
-          to: config.email, // alternative common name some templates use
-          recipient: config.email, // another fallback
-          reply_to: formData.email,
-        },
+        config.emailjs.contactTemplateId,
+        payload,
         EMAILJS_PUBLIC_KEY
       )
-      
-      if (response.status === 200) {
-        setSubmitStatus('success')
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        })
-        
-        // Reset status after 5 seconds
-        setTimeout(() => {
-          setSubmitStatus(null)
-        }, 5000)
-      } else {
-        throw new Error('Failed to send message')
-      }
-      
+
+      // 2) Confirm receipt to the user (Auto-Reply)
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        config.emailjs.replyTemplateId,
+        payload,
+        EMAILJS_PUBLIC_KEY
+      )
+
+      setSubmitStatus('success')
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      })
+
+      setTimeout(() => {
+        setSubmitStatus(null)
+      }, 5000)
     } catch (error) {
-      // EmailJSResponseStatus typically has .status and .text
-      console.error('Error sending email:', error?.status, error?.text || error)
+      const status = error?.status || error?.code || 'unknown'
+      const text = error?.text || error?.message || JSON.stringify(error) || 'Please try again or contact me directly.'
+      console.error('Error sending email:', status, text)
       setSubmitStatus('error')
-      setErrors({ submit: `Failed to send message (${error?.status || 'unknown'}). ${error?.text || 'Please try again or contact me directly.'}` })
-      
-      // Reset error status after 5 seconds
+      setErrors({ submit: `Failed to send message (${status}). ${text}` })
+
       setTimeout(() => {
         setSubmitStatus(null)
         setErrors({})
@@ -224,7 +230,7 @@ const Contact = () => {
                   </svg>
                   <div>
                     <h4>Message Sent Successfully!</h4>
-                    <p>Thank you for your message. I'll get back to you within 24 hours.</p>
+                    <p>Thank you for your message. I'll get back to you within 3 business days.</p>
                   </div>
                 </div>
               )}

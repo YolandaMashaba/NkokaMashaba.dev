@@ -5,12 +5,8 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all')
 
   const projects = [
-    { id: 1, title: 'E-Commerce Platform', description: 'A full-featured online shopping platform with cart, checkout, and payment integration.', category: 'web', tags: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux'], github: '#', demo: '#', imageColor: '#fde68a', featured: true },
-    { id: 2, title: 'Task Management App', description: 'A productivity application for managing tasks with team collaboration features.', category: 'web', tags: ['React', 'Firebase', 'Material-UI', 'Context API'], github: '#', demo: '#', imageColor: '#c7d2fe' },
-    { id: 3, title: 'Weather Dashboard', description: 'Real-time weather application with interactive maps and forecasting.', category: 'web', tags: ['React', 'API Integration', 'Chart.js', 'OpenWeather'], github: '#', demo: '#', imageColor: '#a7f3d0' },
-    { id: 4, title: 'Fitness Tracker', description: 'Mobile-responsive fitness application for tracking workouts and progress.', category: 'mobile', tags: ['React Native', 'Redux', 'Firebase', 'HealthKit'], github: '#', demo: '#', imageColor: '#fca5a5' },
-    { id: 5, title: 'Portfolio Website', description: 'A modern portfolio website with animations and dark mode.', category: 'web', tags: ['React', 'Vite', 'CSS', 'Animations'], github: '#', demo: '#', imageColor: '#bae6fd' },
-    { id: 6, title: 'Social Media Dashboard', description: 'Analytics dashboard for tracking social media metrics.', category: 'web', tags: ['React', 'D3.js', 'Express', 'Socket.io'], github: '#', demo: '#', imageColor: '#fbcfe8' },
+    { id: 1, title: 'Task Management App', description: 'A productivity application for managing tasks with team collaboration features.', category: 'web', tags: ['React', 'Firebase', 'Material-UI', 'Context API'], github: 'https://github.com/YolandaMashaba/TaskFlow.git', demo: 'https://task-flow-eta-one-90.vercel.app', imageColor: '#c7d2fe' },
+    { id: 2, title: 'Portfolio Website', description: 'A modern portfolio website with animations.', category: 'web', tags: ['React', 'Vite', 'CSS', 'Animations'], github: 'https://github.com/YolandaMashaba/NkokaMashaba.dev.git', demo: '#', imageColor: '#bae6fd' },
   ]
 
   const filters = [
