@@ -7,6 +7,7 @@ const Projects = () => {
   const projects = [
     { id: 1, title: 'Task Management App', description: 'A productivity application for managing tasks with team collaboration features.', category: 'web', tags: ['React', 'Firebase', 'Material-UI', 'Context API'], github: 'https://github.com/YolandaMashaba/TaskFlow.git', demo: 'https://task-flow-eta-one-90.vercel.app', imageColor: '#c7d2fe' },
     { id: 2, title: 'Portfolio Website', description: 'A modern portfolio website with animations.', category: 'web', tags: ['React', 'Vite', 'CSS', 'Animations'], github: 'https://github.com/YolandaMashaba/NkokaMashaba.dev.git', demo: '#', imageColor: '#bae6fd' },
+    { id: 3, title: 'DoToday', description: 'A native Android application for managing your daily tasks.', category: 'mobile', tags: ['Android', 'Kotlin'], github: 'https://github.com/YolandaMashaba/DoToday', demo: 'https://appetize.io/embed/b_ksyedcfkonyhmuw2v6r3qqu52u', apk: 'https://github.com/YolandaMashaba/DoToday/releases/download/v1.0.0/DoToday-v1.0.0.apk', imageColor: '#fde68a' },
   ]
 
   const filters = [
@@ -72,6 +73,9 @@ const Projects = () => {
 
                 <div className="project-actions">
                   <a href={project.demo} className="text-link" target="_blank" rel="noopener noreferrer">Live demo →</a>
+                  {project.apk && (
+                    <a href={project.apk} className="text-link" download>Download APK ↓</a>
+                  )}
                   <a href={project.github} className="text-link" target="_blank" rel="noopener noreferrer">View code →</a>
                 </div>
                 
