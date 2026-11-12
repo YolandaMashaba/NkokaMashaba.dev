@@ -31,7 +31,7 @@ const About = () => {
           <div className="about-stats">
             <div className="stat-grid">
               <div className="stat-card">
-                <div className="stat-number">2</div>
+                <div className="stat-number">3</div>
                 <div className="stat-label">Projects Completed</div>
               </div>
               <div className="stat-card">
