@@ -38,10 +38,6 @@ const About = () => {
                 <div className="stat-number">2</div>
                 <div className="stat-label">Years Experience</div>
               </div>
-              <div className="stat-card">
-                <div className="stat-number">13</div>
-                <div className="stat-label">Technologies</div>
-              </div>
             </div>
           </div>
         </div>
