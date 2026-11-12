@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 const Hero = () => {
   const [textIndex, setTextIndex] = useState(0)
   const roles = [
-    'Product Designer',
     'Full‑Stack Developer',
     'UI/UX Designer',
     'Problem Solver'
