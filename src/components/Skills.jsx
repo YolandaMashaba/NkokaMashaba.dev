@@ -2,13 +2,14 @@
 import { useEffect, useState } from 'react'
 
 const Skills = () => {
-  const [visible, setVisible] = useState([false, false, false])
-
   const skillCategories = [
     { title: 'Frontend', skills: ['React', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'Vite', 'Blazor'] },
     { title: 'Backend', skills: ['Node.js', 'MongoDB', 'PostgreSQL', 'REST APIs', 'Java', 'C#', '.NET'] },
+    { title: 'Mobile', skills: ['Android Development', 'Kotlin'] },
     { title: 'Tools & Others', skills: ['Git', 'Figma', 'Testing', 'CI/CD'] },
   ]
+
+  const [visible, setVisible] = useState(() => skillCategories.map(() => false))
 
   useEffect(() => {
     const observer = new IntersectionObserver(
