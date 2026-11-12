@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 const Skills = () => {
   const skillCategories = [
     { title: 'Frontend', skills: ['React', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'Vite', 'Blazor'] },
-    { title: 'Backend', skills: ['Node.js', 'MongoDB', 'PostgreSQL', 'REST APIs', 'Java', 'C#', '.NET'] },
+    { title: 'Backend', skills: ['Node.js', 'Firebase/Firestore', 'PostgreSQL', 'REST APIs', 'Java', 'C#', '.NET'] },
     { title: 'Mobile', skills: ['Android Development', 'Kotlin'] },
     { title: 'Tools & Others', skills: ['Git', 'Figma', 'Testing', 'CI/CD'] },
   ]
