@@ -62,15 +62,6 @@ const Skills = () => {
             </div>
           ))}
         </div>
-
-        <div className="skills-note">
-          <p className="muted center">Constantly learning and exploring new patterns. Recently: performance, serverless, advanced React.</p>
-          <div className="chip-row">
-            {['React 18', 'Next.js', 'Testing', 'Serverless', 'Three.js'].map((t) => (
-              <span className="chip" key={t}>{t}</span>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   )
